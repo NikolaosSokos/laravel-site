@@ -23,7 +23,16 @@
 </head>
 <body class="bg-gray-100">
 
-    <h1 class="text-2xl font-bold text-center p-4">Event: {{ $event_id }}</h1>
+    <div class="text-center p-4">
+        <h1 class="text-2xl font-bold">Event: {{ $event_id }}</h1>
+        
+        @if($event_time)
+            <p class="text-gray-700 text-sm mt-1">
+                <strong>Event Time:</strong> {{ $event_time }}
+            </p>
+        @endif
+    </div>
+
 
     <x-bladewind::tab-group name="webview-tabs">
 
@@ -55,13 +64,17 @@
                 @endif
             </x-bladewind::tab-content>
 
-            <!-- Shakemaps Tab -->
             <x-bladewind::tab-content name="shakemaps">
-                <iframe src="https://accelnet.gein.noa.gr/noa_sites/noa.shakemaps.gr/public/index/167283"
-                        class="full-screen-iframe">
-                    Your browser does not support iframes.
-                </iframe>
+                @if($quake_id)
+                    <iframe src="https://accelnet.gein.noa.gr/noa_sites/noa.shakemaps.gr/public/index/{{ $quake_id }}"
+                            class="full-screen-iframe">
+                        Your browser does not support iframes.
+                    </iframe>
+                @else
+                    <p class="text-red-500 text-center">Shakemap not available for this event.</p>
+                @endif
             </x-bladewind::tab-content>
+
 
             <!-- BBNet Event Info Tab -->
             <x-bladewind::tab-content name="bbnet">
