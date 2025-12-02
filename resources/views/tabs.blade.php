@@ -86,7 +86,7 @@
             Event: {{ $event_id }}
         </div>
 
-        <img src="{{ asset('vendor/bladewind/images/seismo.png') }}" class="seismo-img">
+        <img src="{{ asset('vendor/bladewind/images/seismo.gif') }}" class="seismo-img">
     </div>
 
     @if($event_time)
